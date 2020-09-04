@@ -67,9 +67,16 @@ class _BouncingWidgetState extends State<BouncingWidget> with SingleTickerProvid
       lowerBound: 0.0,
       upperBound: 0.1,
     )..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    })..addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _controller.forward();
+      }
+    });
     super.initState();
+    _controller.forward();
   }
 
   /// Dispose the animation controller
