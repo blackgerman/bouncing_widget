@@ -76,6 +76,7 @@ class _BouncingWidgetState extends State<BouncingWidget> with SingleTickerProvid
       }
     });
     super.initState();
+    // release the tiger
     _controller.forward();
   }
 
